@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love ❤️</title>
+
+<style>
+  :root {
+    --bg-color: #1a0003;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --accent: #ff4d6d;
+    --text-light: #fff5f6;
+  }
+
+  body {
+    background: linear-gradient(135deg, #4a000b, var(--bg-color));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* تأثير القلوب المتساقطة */
+  .heart {
+    position: absolute;
+    color: var(--accent);
+    font-size: 20px;
+    animation: fall linear forwards;
+    opacity: 0.7;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(105vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .container {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 450px;
+    width: 85%;
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+    box-sizing: border-box;
+  }
+
+  h1, h2 {
+    margin-top: 0;
+    color: var(--text-light);
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.6rem; color: var(--accent); margin-bottom: 5px; }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffd0d6;
+  }
+
+  .input-group {
+    position: relative;
+    max-width: 280px;
+    margin: 20px auto;
+  }
+
+  input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+    text-align: center;
+  }
+
+  input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+  }
+
+  button {
+    padding: 14px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .main {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .main.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* تصميم العداد الزمني الفخم */
+  .timer-container {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 77, 109, 0.2);
+  }
+
+  .timer-title {
+    font-size: 0.95rem;
+    color: #ffb3c1;
+    margin-bottom: 10px;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: space-around;
+    direction: ltr;
+  }
+
+  .time-box {
+    text-align: center;
+    flex: 1;
+  }
+
+  .time-num {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    display: block;
+  }
+
+  .time-label {
+    font-size: 0.75rem;
+    color: #ffd0d6;
+  }
+
+  .music {
+    margin-top: 20px;
+  }
+
+  audio {
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    border-radius: 30px;
+    width: 100%;
+    max-width: 280px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="card">
+  <!-- واجهة قفل الرقم السري القديمة بتصميم حديث -->
+  <div class="login" id="loginSection">
+    <h1>Alaa ❤️</h1>
+    <p>A8laaaa 7agaaa Leyaa</p>
+    
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password">
+    </div>
+
+    <button onclick="openSite()">Unlock 💕</button>
+  </div>
+
+  <!-- واجهة المحتوى الداخلي بعد فتح القفل -->
+  <div class="main" id="mainSection">
+    <h2>2026/9/4 اول مره اتكلمناا 💖</h2>
+    
+    <!-- العداد الزمني الذكي -->
+    <div class="timer-container">
+      <div class="timer-title">الوقت اللي عشناه سوا بقالنا:</div>
+      <div class="countdown">
+        <div class="time-box">
+          <span class="time-num" id="seconds">00</span>
+          <span class="time-label">ثانية</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="minutes">00</span>
+          <span class="time-label">دقيقة</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="hours">00</span>
+          <span class="time-label">ساعة</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="days">00</span>
+          <span class="time-label">يوم</span>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      م عارف اقولك اي عموما بس بحبك اويي بجد ويارب يعجبك ينور عيوني ❤️ 
+    </p>
+
+    <!-- مشغل الموسيقى المربوط تلقائياً بملفك المرفوع بجانبه -->
+    <div class="music">
+      <audio id="bgMusic" controls loop preload="auto" src="music.mp3">
+      </audio>
+    </div>
+  </div>
+</div>
+
+<script>
+// ضبط تاريخ البداية (السنة، الشهر - 1، اليوم) -> سبتمبر هو شهر 8 برمجيًا لأن العد يبدأ من الصفر
+const startDate = new Date(2026, 8, 4, 0, 0, 0); 
+
+function updateTimer() {
+  const now = new Date();
+  const diff = now - startDate;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+  document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+  document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+}
+
+// دالة توليد القلوب المتساقطة في الخلفية
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  
+  const heartTypes = ["❤️", "💖", "💕", "💗", "❤"];
+  heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+  
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 15 + 15 + "px";
+  
+  const duration = Math.random() * 3 + 3; 
+  heart.style.animationDuration = duration + "s";
+  
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+
+// تشغيل تساقط القلوب باستمرار
+setInterval(createHeart, 400);
+
+function openSite() {
+  const pass = document.getElementById("password").value;
+  const loginSection = document.getElementById("loginSection");
+  const mainSection = document.getElementById("mainSection");
+  const music = document.getElementById("bgMusic");
+
+  // كلمة السر الجديدة المحدثة من كودك
+  if (pass === "Bahbek") {
+    loginSection.style.display = "none";
+    mainSection.classList.add("show");
+    
+    updateTimer();
+    setInterval(updateTimer, 1000);
+    
+    // إجبار تشغيل الأغنية المرفوعة محلياً فوراً وفك كتم الصوت
+    setTimeout(function() {
+        music.play().then(() => {
+            console.log("الـ MP3 شغال بنجاح!");
+        }).catch(err => {
+            music.muted = false;
+            music.play();
+        });
+    }, 100);
+
+  } else {
+    alert("Wrong Password");
+  }
+}
+</script>
+
+</body>
+</html>
